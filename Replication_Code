@@ -1,0 +1,12 @@
+Repadmin /syncall /AdeP
+
+(Get-ADDomainController -Filter *).Name
+
+| Foreach-Object { repadmin /syncall $_ (Get-ADDomain).DistinguishedName /AdeP }
+
+Get-ADReplicationPartnerMetadata -Target "$env:userdnsdomain" -Scope Domain | Select-Object Server, LastReplicationSuccess
+
+Repadmin /kcc 
+
+repadmin /kcc site:HQ
+
