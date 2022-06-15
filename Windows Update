@@ -3,3 +3,4 @@ Import-Module PSWindowsUpdate
 Get-Command -Module PSWindowsUpdate
 Install-WindowsUpdate -AcceptAll -AutoReboot
 Get-WUHistory
+wuauclt.exe /updatenow
