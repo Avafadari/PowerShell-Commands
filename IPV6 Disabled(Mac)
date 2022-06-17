@@ -1,0 +1,3 @@
+Networksetup -listallnetworkservices
+networksetup -setv6off “Wi-Fi”
+networksetup -setv6off Ethernet
