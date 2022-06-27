@@ -4,3 +4,23 @@ Get-Command -Module PSWindowsUpdate
 Install-WindowsUpdate -AcceptAll -AutoReboot
 Get-WUHistory
 wuauclt.exe /updatenow
+
+net stop wuauserv
+
+net stop bits
+
+net stop cryptsvc
+
+net stop msiserver
+
+ren c:\windows\softwaredistribution softwaredistribution.old
+
+del c:\windows\softwaredistribution.old
+
+net start wuauserv
+
+net start bits
+
+net start cryptsvc
+
+net start msiserver
