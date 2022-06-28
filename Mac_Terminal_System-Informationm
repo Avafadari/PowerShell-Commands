@@ -1,0 +1,18 @@
+ system_profiler
+ 
+ system_profiler | grep "Model Identifier"
+
+system_profiler -listDataTypes
+
+system_profiler SPCameraDataType
+
+system_profiler SPHardwareDataType | grep "Model Identifier"
+
+system_profiler > ~/Desktop/system_report.txt
+
+system_profiler -detailLevel [basic|mini|full] > ~/Desktop/system_report.txt
+
+system_profiler -detailLevel basic > ~/Desktop/system_report_basic.txt
+
+system_profiler -detailLevel mini -xml > ~/Desktop/system_report_mini.spx
+
