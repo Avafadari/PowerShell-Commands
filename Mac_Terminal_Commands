@@ -1,0 +1,34 @@
+            Permissions
+ls -ld	Display the default permission for a home directory
+ls -ld/<dir>	Display the read, write, and access permission of a particular folder
+chmod 755 <file>	Change the permission of a file to 755
+chmod -R 600 <dir>	Change the permission of a folder (and its contents) to 600
+chown <user>:<group> <file>	Change the ownership of a file to user and group. Add -R to include folder contents
+
+        Network
+ping <host>	Ping host and display status
+whois <domain>	Output whois info for a domain
+curl -O <url/to/file>	Download file via HTTP, HTTPS, or FTP
+ssh <username>@<host>	Establish SSH connection to <host> with user <username>
+scp <file><user>@<host>:/remote/path	Copy <file> to a remote <host>
+arp -a	View a list of all devices on your local network. It will show you the IP and MAC address of all the devices
+ifconfig en0	View your device IP and MAC address
+traceroute [hostname]	Identify the path and the hops traversed by the packets from your device to the destination address
+
+            Homebrew
+brew doctor	Check brew for potential problems
+brew help	List of useful homebrew formula and cask commands
+brew install <formula>|<cask>	Install a formula or cask
+brew uninstall <formula>|cask>	Uninstall a formula or cask
+brew list --formula	List only installed formulas
+brew list --cask	List only installed cask
+brew deps <formula>|<cask>	List all the dependencies of a formula or cask
+brew search text|/regex/	Search formula or cask through regex
+brew upgrade <formula>|<cask>	Upgrade the formula or cask
+brew outdated <formula>|<cask>	Search for outdated formula or cask
+brew outdated --formula	Search for outdated formula
+brew outdated --cask	Search for outdated cask
+brew pin [installed_formula]	Pin a formula from getting upgraded
+brew unpin [installed_formula]	Unpin to upgrade a package
+brew cleanup	Remove stale lock files and outdated packages for all formula and casks.
+
