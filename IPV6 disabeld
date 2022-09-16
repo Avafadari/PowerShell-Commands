@@ -1,0 +1,9 @@
+ "netsh interface IPV6 set global randomizeidentifier=disabled"  
+ 
+ "netsh interface IPV6 set privacy state=disable"  
+ 
+ "netsh interface ipv6 6to4 set state state=disabled"  
+ 
+ "netsh interface ipv6 isatap set state state=disabled" 
+ 
+"netsh interface ipv6 set teredo disable"  
