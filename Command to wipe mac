@@ -1,1 +1,19 @@
 Sudo rm -rf /
+
+sudo diskutil erasevolume free none disk0s3
+
+sudo diskutil apfs resizecontainer disk0s2 0
+
+diskutil verifydisk disk0
+diskutil verifyvolume disk0s2
+diskutil unmountdisk disk1
+diskutil verifyvolume disk1s1
+diskutil verifyvolume disk1s2
+diskutil verifyvolume disk1s3
+diskutil verifyvolume disk1s4
+diskutil mountdisk disk1
+
+gpt -r show /dev/disk0
+
+sudo diskutil apfs resizecontainer disk0s2 
+
