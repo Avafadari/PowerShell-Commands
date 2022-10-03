@@ -31,3 +31,5 @@ DISM.exe /Online /Cleanup-image /Restorehealth
 sfc/scannow
 ****After running these commands, Go to this site and Download the the Reset_Reregister_Windows_Update_Components
 https://bit.ly/3t169O7 
+**TO CHECK UPDATES AND IF THEY INSTALL**
+Get-hotfix
