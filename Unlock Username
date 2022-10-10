@@ -1,1 +1,1 @@
-net user administrator /active:yes
+net user administrator password /active:yes
