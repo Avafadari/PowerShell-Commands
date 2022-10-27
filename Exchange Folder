@@ -1,0 +1,14 @@
+PS C:\> Set-ExecutionPolicy RemoteSigned
+
+Install-Module PowershellGet -Force
+
+Connect-ExchangeOnline
+
+Connect-ExchangeOnline -UserPrincipalName roger.rivera@infinityairsprings.com
+
+Set-ExecutionPolicy RemoteSigned
+
+Install-Module PowershellGet -Force
+
+Get-EXOMailboxFolderStatistics roger.rivera@infinityairsprings.com | Select Name,FolderSize,ItemsinFolder
+
