@@ -1,3 +1,6 @@
 sudo softwareupdate --ignore 
 
 sudo /usr/sbin/softwareupdate --ignore "macOS Name of the Update"
+
+softwareupdate -l
+softwareupdate -i -a
