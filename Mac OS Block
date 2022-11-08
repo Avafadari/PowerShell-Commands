@@ -4,3 +4,5 @@ sudo /usr/sbin/softwareupdate --ignore "macOS Name of the Update"
 
 softwareupdate -l
 softwareupdate -i -a
+
+softwareupdate -ir
