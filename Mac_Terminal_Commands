@@ -32,3 +32,7 @@ brew pin [installed_formula]	Pin a formula from getting upgraded
 brew unpin [installed_formula]	Unpin to upgrade a package
 brew cleanup	Remove stale lock files and outdated packages for all formula and casks.
 
+du -hs       ***Disk Space
+
+
+
