@@ -34,5 +34,11 @@ brew cleanup	Remove stale lock files and outdated packages for all formula and c
 
 du -hs       ***Disk Space
 
+sudo scutil --set ComputerName <YourComputerName>    ****To rename the computer name
 
+To rename hostname: sudo scutil --set HostName YourHostName
+
+To Add Mac To AD Directory: sudo dsconfigad -preferred <adserver.example.com> -a <computername> –domain example.com -u administrator -p <password>
+
+softwareupdate recommended
 
