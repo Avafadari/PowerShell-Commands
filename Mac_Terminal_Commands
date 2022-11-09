@@ -44,3 +44,4 @@ softwareupdate recommended
 
 softwareupdate --list-full-installers
 
+sudo powermetrics
