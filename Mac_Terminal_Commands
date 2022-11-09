@@ -42,3 +42,5 @@ To Add Mac To AD Directory: sudo dsconfigad -preferred <adserver.example.com> -a
 
 softwareupdate recommended
 
+softwareupdate --list-full-installers
+
