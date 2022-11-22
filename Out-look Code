@@ -1,0 +1,16 @@
+mkdir c:\OutlookBak
+
+reg export HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\15.0 C:\outlookbak\regbackup15.reg
+reg export HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0 C:\outlookbak\regbackup16.reg
+reg export HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\8.0 C:\outlookbak\regbackup8.reg
+
+reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\15.0 /f
+reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0 /f
+reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\8.0 /f
+echo Copying Files
+xcopy C:\Users\%USERNAME%\AppData\Local\Microsoft\Outlook c:\Outlookbak /e
+echo Deleting AppData Outlook Folder
+@RD /S /Q C:\Users\%USERNAME%\AppData\Local\Microsoft\Outlook
+mkdir C:\Users\%USERNAME%\AppData\Local\Microsoft\Outlook
+Echo Tap Any Key to Continue
+Pause
