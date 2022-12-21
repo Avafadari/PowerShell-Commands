@@ -45,3 +45,7 @@ softwareupdate recommended
 softwareupdate --list-full-installers
 
 sudo powermetrics
+
+To Remove applications On Mac Use
+  Sudo rm -rf (type in aplication or folder that you want to remove)
+  
