@@ -1,7 +1,0 @@
-sudo dseditgroup -o edit -d UserName -t user admin 
-
-https://apple.stackexchange.com/questions/105442/os-x-change-admin-user-to-standard-user-with-command-line
-
-https://stackoverflow.com/questions/1104972/how-do-i-get-the-name-of-the-active-user-via-the-command-line-in-os-x
-
-https://community.jamf.com/t5/jamf-pro/command-line-to-check-for-ad-bind/m-p/220085
