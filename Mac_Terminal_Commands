@@ -51,3 +51,7 @@ To Remove applications On Mac Use
   
 To Show if on Active Directory
   dsconfigad -show
+
+Change Admin user to Standard User
+ sudo dseditgroup -o edit -d UserName -t user admin 
+
