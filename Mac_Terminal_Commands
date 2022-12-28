@@ -55,3 +55,9 @@ To Show if on Active Directory
 Change Admin user to Standard User
  sudo dseditgroup -o edit -d UserName -t user admin 
 
+Mac Block OS Update
+            sudo softwareupdate --ignore 
+            sudo /usr/sbin/softwareupdate --ignore "macOS Name of the Update"
+            softwareupdate -l
+            softwareupdate -i -a
+            softwareupdate -ir
