@@ -1,0 +1,15 @@
+Open CMD and run "w32tm /query /status" and it will show where its looking for its time updates, etc. 
+
+If you want to disable the GPO you can use the below command to configure the time service:
+
+w32tm /config /manualpeerlist:*internet based NTP server",0x8 /syncfromflags:manual /reliable:yes /update
+
+Once thats completed run:
+
+w32tm /resync /rediscover
+
+and finally:
+
+net stop w32time
+
+net start w32time
