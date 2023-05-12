@@ -11,3 +11,5 @@ Dism /Image:C:\offline /Cleanup-Image /RestoreHealth /Source:c:\test\mount\windo
 Dism /Online /Cleanup-Image /RestoreHealth /Source:c:\test\mount\windows /LimitAccess
 
 Dism /Cleanup-Mountpoints
+
+https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image?view=windows-11
