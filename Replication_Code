@@ -10,3 +10,4 @@ Repadmin /kcc
 
 repadmin /kcc site:HQ
 
+dcdiag /s:DC01
