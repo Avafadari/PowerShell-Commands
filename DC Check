@@ -1,0 +1,15 @@
+dcdiag /s:DC01
+
+dcdiag /e /v /q
+
+dcdiag /s:DC01 /a /test:NetLogons
+
+Dcdiag.exe /TEST:RidManager /v
+
+dcdiag /s:DC01 /a /skip:Replication
+
+dcdiag /s:DC01 /u:contosoadmin /p:P@SSwoord
+
+dcdiag /s:DC01 /a
+
+dcdiag /s:DC01 /q
