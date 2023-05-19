@@ -13,3 +13,11 @@ dcdiag /s:DC01 /u:contosoadmin /p:P@SSwoord
 dcdiag /s:DC01 /a
 
 dcdiag /s:DC01 /q
+
+dcdiag /s:DC01 /fix
+
+DCDiag /Test:DNS /e /v /s:dc01.theitbros.com >c:\logs\DcdiagDNSCheck.txt
+
+Get-Content c:\logs\DcdiagDNSCheck.txt
+
+DCDiag /Test:DNS /e /v /s:dc01.theitbros.com /fix
