@@ -2,3 +2,15 @@ dsregcmd /join
 
 dsregcmd /status
 
+/status       Display the device join status.
+   /status_old   Display the device join status in old format.
+   /join         Schedule and monitor the Autojoin task to Hybrid Join the device.
+   /leave        Perform a Hybrid Unjoin.
+                 Removes the device from azure and then re-joins on the next delta sync.
+   /forcerecovery For Azure AD joined devices, will force a Sign out and Sign back in.
+   /refreshprt   Refresh Primary Refresh Token (PRT) in the cloudAP cache.
+   /debug        Display debug messages.
+
+   /refreshp2pcerts  Refresh P2P certificates. *
+   /cleanupaccounts  Delete all WAM accounts. *
+   /listaccounts     List all WAM accounts. *
