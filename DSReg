@@ -14,3 +14,5 @@ dsregcmd /status
    /refreshp2pcerts  Refresh P2P certificates. *
    /cleanupaccounts  Delete all WAM accounts. *
    /listaccounts     List all WAM accounts. *
+
+https://learn.microsoft.com/en-us/azure/active-directory/devices/troubleshoot-device-dsregcmd
