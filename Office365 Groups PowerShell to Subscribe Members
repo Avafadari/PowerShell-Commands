@@ -1,0 +1,36 @@
+# ref: https://answers.microsoft.com/en-us/msoffice/forum/msoffice_outlook-mso_win10-mso_o365b/how-to-subscribe-all-members-to-office-365-group/e998a92e-04a0-4d56-8b99-67099d1babb3
+# when you create group without changing subscriber setting, all group member added during the creation will not subscribe to group msg. Even worse, when you create a group by creating a new team, this option won't even show up (in older versions).
+# this script will list and re-configure so all group members will subscribe to all of their groups
+
+#Set-ExecutionPolicy RemoteSigned
+$UserCredential = Get-Credential
+$Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
+Import-PSSession $Session
+
+# get array of the user emails whose user is not subscribing to current group
+function Get-NaughtyUserList {
+  Param($GroupName)
+  $MemberList = Get-UnifiedGroupLinks -Identity $($GroupName) -LinkType Members | ForEach-Object{$_.PrimarySmtpAddress}
+  $SubscriberList = Get-UnifiedGroupLinks -Identity $($GroupName) -LinkType Subscribers| ForEach-Object{$_.PrimarySmtpAddress}
+
+  $NaughtyUser = $MemberList |Where-Object {$SubscriberList -notcontains $_}
+  If($NaughtyUser) {
+    Write-Host $NaughtyUser
+    Return $NaughtyUser
+  } Else {
+    Write-Host All Clean!
+  }
+}
+
+Get-UnifiedGroup | ForEach-Object {
+  Write-Host $_.Name
+  $List = Get-NaughtyUserList -GroupName $_.Name
+  If($List) {
+    Add-UnifiedGroupLinks -Identity $_.Name -LinkType Subscribers -Links $List.Split(',')
+    Get-NaughtyUserList -GroupName $_.Name
+  }
+}
+
+
+
+Remove-PSSession $Session
