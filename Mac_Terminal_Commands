@@ -48,6 +48,9 @@ sudo powermetrics
 
 To Remove applications On Mac Use
   Sudo rm -rf (type in aplication or folder that you want to remove)
+  sudo pkgutil --forget com.cisco.pkg.anyconnect.vpn
+
+          
   
 To Show if on Active Directory
   dsconfigad -show
