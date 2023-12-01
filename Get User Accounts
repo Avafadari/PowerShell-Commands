@@ -11,3 +11,5 @@ Total number of enabled/disabled accounts in AD
 
 Total number of user accounts in a Group
     PS> (Get-ADGroupMember -Identity "Group Name").count
+
+Get-ADUser -Filter * -Properties lastLogon | Select samaccountname, @{Name="lastLogon";Expression={[datetime]::FromFileTime($_.'lastLogon')}}
