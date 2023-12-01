@@ -1,0 +1,13 @@
+Total number of user accounts in AD
+    PS> (Get-ADUser -filter *).count
+
+Total number of user accounts in an OU
+    PS> (Get-ADUser -filter * -searchbase "OU=Vancouver, OU=MyCompany, DC=Domain, DC=Local").count
+Replace the SearchBase with your own OU path.
+
+Total number of enabled/disabled accounts in AD
+    PS> (Get-AdUser -filter * |Where {$_.enabled -eq "True"}).count
+    PS> (Get-ADUser -filter * |Where {$_.enabled -ne "False"}).count
+
+Total number of user accounts in a Group
+    PS> (Get-ADGroupMember -Identity "Group Name").count
