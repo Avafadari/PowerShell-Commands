@@ -4,3 +4,13 @@ Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\SecureBoot\State"
 
 # Restart the computer for changes to take effect
 Restart-Computer
+
+
+# Check if Secure Boot is enabled
+$secureBootEnabled = Get-ItemPropertyValue -Path "HKLM:\System\CurrentControlSet\Control\SecureBoot\State" -Name "UEFISecureBootEnabled"
+
+if ($secureBootEnabled -eq 1) {
+    Write-Output "Secure Boot is enabled."
+} else {
+    Write-Output "Secure Boot is not enabled."
+}
