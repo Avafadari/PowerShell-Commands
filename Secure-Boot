@@ -1,0 +1,6 @@
+Turn on Secure Boot remotley
+  # Enable Secure Boot
+Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\SecureBoot\State" -Name "UEFISecureBootEnabled" -Value 1
+
+# Restart the computer for changes to take effect
+Restart-Computer
