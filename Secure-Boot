@@ -7,6 +7,7 @@ Restart-Computer
 
 
 # Check if Secure Boot is enabled
+ Confirm-SecureBootUEFI
 $secureBootEnabled = Get-ItemPropertyValue -Path "HKLM:\System\CurrentControlSet\Control\SecureBoot\State" -Name "UEFISecureBootEnabled"
 
 if ($secureBootEnabled -eq 1) {
