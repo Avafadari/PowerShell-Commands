@@ -5,3 +5,41 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Biometrics" -Name "Ena
 Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI' -Name 'LastLoggedOnProvider'
 
 Get-WmiObject -Namespace root\CIMv2\Security\MicrosoftBiometrics -Class Win32_BiometricIdentity | Remove-WmiObject.”
+
+Run to see what Computer are using Fingerprint, Pin or Facical
+
+$members = Get-ADGroupMember -Identity 'Sec-HelloWindows-AD'
+
+$results = @()
+
+foreach ($member in $members) {
+    $computerName = $member.Name
+
+    # Check if the computer is reachable
+    if (Test-Connection -ComputerName $computerName -Count 1 -Quiet) {
+        # Check if the computer has PIN, fingerprint, or facial recognition enabled
+        $authenticationMethods = Invoke-Command -ComputerName $computerName -ScriptBlock {
+            $methods = @()
+            $biometricProvider = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Biometrics' -Name 'Enabled'
+            if ($biometricProvider.Enabled -eq 1) {
+                $methods += 'Biometric (Fingerprint/Facial Recognition)'
+            }
+            $pinProvider = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI' -Name 'AllowDomainPINLogon'
+            if ($pinProvider.AllowDomainPINLogon -eq 1) {
+                $methods += 'PIN'
+            }
+            $methods
+        } -ErrorAction SilentlyContinue
+
+        # Create a result object
+        $result = [PSCustomObject]@{
+            ComputerName = $computerName
+            AuthenticationMethods = $authenticationMethods -join ', '
+        }
+        $results += $result
+    } else {
+        Write-Host "Computer $computerName is unreachable."
+    }
+}
+
+$results | Export-Csv -Path 'C:\Users\admavafadari\Export\Report.csv' -NoTypeInformation
