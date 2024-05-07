@@ -1,7 +1,7 @@
-"Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Biometrics' -Name 'Enabled' -Value 0".
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Biometrics' -Name 'Enabled' -Value 0".
 
-"Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Biometrics" -Name "Enabled" -Value 0"
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Biometrics" -Name "Enabled" -Value 0"
 
-“Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI' -Name 'LastLoggedOnProvider.’
+Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI' -Name 'LastLoggedOnProvider.’
 
-“Get-WmiObject -Namespace root\CIMv2\Security\MicrosoftBiometrics -Class Win32_BiometricIdentity | Remove-WmiObject.”
+Get-WmiObject -Namespace root\CIMv2\Security\MicrosoftBiometrics -Class Win32_BiometricIdentity | Remove-WmiObject.”
