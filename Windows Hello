@@ -7,39 +7,38 @@ Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authenti
 Get-WmiObject -Namespace root\CIMv2\Security\MicrosoftBiometrics -Class Win32_BiometricIdentity | Remove-WmiObject.”
 
 Run to see what Computer are using Fingerprint, Pin or Facical
+# Define the name of the security group
+$groupName = "Sec-HelloWindows-AD"
 
-$members = Get-ADGroupMember -Identity 'Sec-HelloWindows-AD'
+# Get the members of the security group
+$groupMembers = Get-ADGroupMember -Identity $groupName
 
 $results = @()
 
-foreach ($member in $members) {
-    $computerName = $member.Name
+foreach ($member in $groupMembers) {
+    $credentialProviders = @()
+    
+    # Check if the user has used PIN, fingerprint, or facial recognition
+    $providerGUIDs = @(
+        '{D6886603-9D2F-4EB2-B667-1971041FA96B}', # PIN
+        '{BEC09223-B018-416D-A0AC-523971B639F5}', # Fingerprint
+        '{8AF662BF-65A0-4D0A-A540-A338A999D36F}'  # Facial Recognition
+    )
 
-    # Check if the computer is reachable
-    if (Test-Connection -ComputerName $computerName -Count 1 -Quiet) {
-        # Check if the computer has PIN, fingerprint, or facial recognition enabled
-        $authenticationMethods = Invoke-Command -ComputerName $computerName -ScriptBlock {
-            $methods = @()
-            $biometricProvider = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Biometrics' -Name 'Enabled'
-            if ($biometricProvider.Enabled -eq 1) {
-                $methods += 'Biometric (Fingerprint/Facial Recognition)'
-            }
-            $pinProvider = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI' -Name 'AllowDomainPINLogon'
-            if ($pinProvider.AllowDomainPINLogon -eq 1) {
-                $methods += 'PIN'
-            }
-            $methods
-        } -ErrorAction SilentlyContinue
-
-        # Create a result object
-        $result = [PSCustomObject]@{
-            ComputerName = $computerName
-            AuthenticationMethods = $authenticationMethods -join ', '
+    foreach ($guid in $providerGUIDs) {
+        $value = Get-ItemProperty -Path "Registry::HKEY_USERS\$($member.SID)\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI" -Name 'LastLoggedOnProvider' -ErrorAction SilentlyContinue
+        if ($value -ne $null -and $value.LastLoggedOnProvider -eq $guid) {
+            $credentialProviders += $guid
         }
-        $results += $result
-    } else {
-        Write-Host "Computer $computerName is unreachable."
     }
+
+    $result = [PSCustomObject]@{
+        UserName = $member.Name
+        CredentialProviders = $credentialProviders -join ', '
+    }
+    $results += $result
 }
 
-$results | Export-Csv -Path 'C:\Users\admavafadari\Export\Report.csv' -NoTypeInformation
+# Export the results to a CSV file
+$results | Export-Csv -Path "CredentialProviders_Report.csv" -NoTypeInformation
+
