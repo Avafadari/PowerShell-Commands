@@ -1,0 +1,21 @@
+2. Use Terminal to Ignore Specific Updates:
+You can use the Terminal to ignore a specific update. This requires knowing the exact identifier for the update you want to avoid. Here’s how:
+
+Open Terminal:
+
+Go to Applications > Utilities > Terminal.
+List Available Updates:
+
+Type the following command and press Enter:
+softwareupdate --list
+
+Ignore the Specific Update:
+sudo softwareupdate --ignore "updateIdentifier"
+For example:
+sudo softwareupdate --ignore "macOS 13.4.1 Update"
+
+3. Reverting the Ignored Update:
+If you later decide that you want to allow the previously ignored update, you can remove it from the ignore list.
+
+Unignore All Updates:
+sudo softwareupdate --reset-ignored
