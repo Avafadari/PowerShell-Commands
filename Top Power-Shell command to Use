@@ -1,0 +1,106 @@
+Active Directory Management
+1.	Get-ADUser - Retrieves user objects.
+2.	Set-ADUser - Modifies user properties.
+3.	New-ADUser - Creates a new user.
+4.	Remove-ADUser - Deletes a user.
+5.	Get-ADGroup - Retrieves group objects.
+6.	Set-ADGroup - Modifies group properties.
+7.	New-ADGroup - Creates a new group.
+8.	Remove-ADGroup - Deletes a group.
+9.	Add-ADGroupMember - Adds a member to a group.
+10.	Remove-ADGroupMember - Removes a member from a group.
+11.	Get-ADComputer - Retrieves computer objects.
+12.	Set-ADComputer - Modifies computer properties.
+13.	New-ADComputer - Creates a new computer object.
+14.	Remove-ADComputer - Deletes a computer object.
+15.	Get-ADOrganizationalUnit - Retrieves OU details.
+16.	Set-ADOrganizationalUnit - Modifies OU properties.
+17.	New-ADOrganizationalUnit - Creates a new OU.
+18.	Remove-ADOrganizationalUnit - Deletes an OU.
+19.	Get-ADDomain - Retrieves domain details.
+20.	Get-ADDomainController - Retrieves domain controller details.
+21.	Test-ComputerSecureChannel - Tests and repairs the secure channel.
+22.	Search-ADAccount - Searches for inactive accounts.
+23.	Get-ADGroupMember - Retrieves group members.
+24.	Get-ADObject - Retrieves a generic AD object.
+25.	Get-ADDomainController - Retrieves information about domain controllers.
+26.	Move-ADObject - Moves an object to a different OU.
+27.	Rename-ADObject - Renames an AD object.
+28.	Unlock-ADAccount - Unlocks a user account.
+29.	Enable-ADAccount - Enables a user account.
+30.	Disable-ADAccount - Disables a user account.
+31.	Get-ADUserResultantPasswordPolicy - Retrieves the password policy for a user.
+System Management
+32.	Get-Service - Retrieves the status of services.
+33.	Start-Service - Starts a service.
+34.	Stop-Service - Stops a service.
+35.	Restart-Service - Restarts a service.
+36.	Get-Process - Retrieves process details.
+37.	Stop-Process - Stops a process.
+38.	Get-EventLog - Retrieves event log data.
+39.	Clear-EventLog - Clears event log entries.
+40.	Write-EventLog - Writes a new entry to an event log.
+41.	Get-WinEvent - Retrieves events from event logs and event tracing logs.
+42.	Get-Job - Retrieves job status.
+43.	Start-Job - Starts a background job.
+44.	Stop-Job - Stops a background job.
+45.	Get-ScheduledTask - Retrieves scheduled tasks.
+46.	New-ScheduledTask - Creates a new scheduled task.
+47.	Unregister-ScheduledTask - Deletes a scheduled task.
+48.	Start-ScheduledTask - Starts a scheduled task.
+49.	Stop-ScheduledTask - Stops a scheduled task.
+50.	Get-Process - Retrieves running processes.
+Networking
+51.	Get-NetIPAddress - Retrieves IP address configurations.
+52.	New-NetIPAddress - Configures a new IP address.
+53.	Remove-NetIPAddress - Removes an IP address configuration.
+54.	Get-NetIPConfiguration - Retrieves network adapter configurations.
+55.	Get-NetAdapter - Retrieves network adapter details.
+56.	Enable-NetAdapter - Enables a network adapter.
+57.	Disable-NetAdapter - Disables a network adapter.
+58.	Get-NetRoute - Retrieves routing table information.
+59.	New-NetRoute - Adds a new route.
+60.	Remove-NetRoute - Deletes a route.
+61.	Test-NetConnection - Tests network connectivity.
+62.	Test-Connection - Pings a remote host.
+63.	Resolve-DnsName - Resolves DNS names.
+64.	Get-DnsClient - Retrieves DNS client settings.
+65.	Set-DnsClientServerAddress - Sets DNS server addresses.
+66.	Get-NetFirewallRule - Retrieves firewall rules.
+67.	New-NetFirewallRule - Creates a new firewall rule.
+68.	Remove-NetFirewallRule - Deletes a firewall rule.
+69.	Enable-NetFirewallRule - Enables a firewall rule.
+70.	Disable-NetFirewallRule - Disables a firewall rule.
+71.	Get-NetFirewallProfile - Retrieves firewall profile settings.
+72.	Set-NetFirewallProfile - Configures firewall profile settings.
+Storage Management
+73.	Get-Disk - Retrieves disk information.
+74.	Get-Partition - Retrieves partition information.
+75.	Get-Volume - Retrieves volume information.
+76.	New-Partition - Creates a new partition.
+77.	Format-Volume - Formats a volume.
+78.	New-Volume - Creates a new volume.
+79.	Resize-Partition - Resizes a partition.
+80.	Remove-Partition - Deletes a partition.
+81.	Get-PhysicalDisk - Retrieves physical disk details.
+82.	Get-DiskUsage - Retrieves disk usage statistics.
+83.	Get-SmbShare - Retrieves SMB share details.
+84.	New-SmbShare - Creates a new SMB share.
+85.	Remove-SmbShare - Deletes an SMB share.
+86.	Get-SmbConnection - Retrieves SMB connection details.
+System Information
+87.	Get-ComputerInfo - Retrieves system information.
+88.	Get-LocalUser - Retrieves local user accounts.
+89.	Get-LocalGroup - Retrieves local groups.
+90.	Get-LocalGroupMember - Retrieves local group members.
+91.	Get-WmiObject - Retrieves management information (e.g., Win32 services).
+92.	Get-Item - Retrieves file system objects.
+93.	Set-Item - Changes properties of a file system object.
+94.	Get-ChildItem - Retrieves files and directories.
+95.	Rename-Item - Renames a file or directory.
+96.	Copy-Item - Copies a file or directory.
+97.	Move-Item - Moves a file or directory.
+98.	Remove-Item - Deletes a file or directory.
+99.	Test-Path - Verifies the existence of a file system path.
+100.	Get-Content - Retrieves the content of a file.
+
