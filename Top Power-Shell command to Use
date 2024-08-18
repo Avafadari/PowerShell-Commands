@@ -104,3 +104,325 @@ System Information
 99.	Test-Path - Verifies the existence of a file system path.
 100.	Get-Content - Retrieves the content of a file.
 
+User Management
+1.	Get-ADUser - Retrieves user objects.
+2.	New-ADUser - Creates a new user.
+3.	Set-ADUser - Modifies user properties.
+4.	Remove-ADUser - Removes a user.
+5.	Unlock-ADAccount - Unlocks a user account.
+6.	Enable-ADAccount - Enables a user account.
+7.	Disable-ADAccount - Disables a user account.
+8.	Get-ADUser -Property PasswordLastSet - Checks when a user's password was last set.
+9.	Set-ADUser -ChangePasswordAtLogon - Forces a user to change their password at next logon.
+10.	Set-ADAccountPassword - Sets a new password for a user.
+11.	Move-ADObject - Moves a user to a different OU.
+12.	Get-ADUser -Filter "Name -like '*'" - Retrieves all user objects.
+13.	**Get-ADUser -Identity "Username" -Properties *** - Retrieves all properties of a user.
+14.	Search-ADAccount -AccountInactive - Finds inactive accounts.
+15.	Get-ADUser -Filter "Enabled -eq $false" - Finds all disabled user accounts.
+
+Group Management
+16.	Get-ADGroup - Retrieves group objects.
+17.	New-ADGroup - Creates a new group.
+18.	Set-ADGroup - Modifies group properties.
+19.	Remove-ADGroup - Removes a group.
+20.	Add-ADGroupMember - Adds users to a group.
+21.	Remove-ADGroupMember - Removes users from a group.
+22.	Get-ADGroupMember - Retrieves group members.
+23.	Get-ADGroup -Filter "GroupCategory -eq 'Security'" - Retrieves all security groups.
+24.	Get-ADGroup -Filter "GroupScope -eq 'Global'" - Retrieves all global groups.
+25.	New-ADGroup -Name "NewGroup" -GroupScope Global - Creates a global group.
+26.	Add-ADPrincipalGroupMembership - Adds a user to multiple groups.
+27.	Get-ADGroup -Properties Members - Retrieves group members with properties.
+28.	Get-ADGroupMember -Recursive - Retrieves all members, including nested groups.
+29.	**Get-ADGroup -Identity "GroupName" -Properties *** - Retrieves all properties of a group.
+30.	Get-ADGroup -Filter "Name -like 'Admin'"* - Finds groups with names starting with "Admin".
+
+Computer Management
+31.	Get-ADComputer - Retrieves computer objects.
+32.	New-ADComputer - Creates a new computer object.
+33.	Set-ADComputer - Modifies computer properties.
+34.	Remove-ADComputer - Removes a computer object.
+35.	Get-ADComputer -Filter "OperatingSystem -like 'Server'" - Retrieves all servers.
+36.	Get-ADComputer -Property * | Select-Object Name, LastLogonDate - Retrieves computers with last logon dates.
+37.	Get-ADComputer -Filter "Enabled -eq $false" - Finds all disabled computer accounts.
+38.	Move-ADObject -Identity "ComputerDN" -TargetPath "OUDN" - Moves a computer to a different OU.
+39.	Restart-Computer -ComputerName "ComputerName" - Restarts a remote computer.
+40.	Rename-Computer -NewName "NewName" -ComputerName "OldName" - Renames a remote computer.
+41.	Get-ADComputer -Filter * -Property IPv4Address - Retrieves IP addresses of computers.
+42.	Test-ComputerSecureChannel - Tests the secure channel between a computer and the domain.
+43.	Get-ADComputer -Filter "Name -like 'Workstation'"* - Finds all computers with names starting with "Workstation".
+44.	Get-ADComputer -Filter "OperatingSystem -like 'Windows 10'" - Retrieves all Windows 10 machines.
+45.	Enable-ADAccount -Identity "ComputerName" - Enables a computer account.
+
+Organizational Unit (OU) Management
+46.	Get-ADOrganizationalUnit - Retrieves OU objects.
+47.	New-ADOrganizationalUnit - Creates a new OU.
+48.	Set-ADOrganizationalUnit - Modifies OU properties.
+49.	Remove-ADOrganizationalUnit - Removes an OU.
+50.	Move-ADObject - Moves objects between OUs.
+51.	Get-ADOrganizationalUnit -Filter "Name -like 'Users'" - Finds OUs with "Users" in the name.
+52.	Get-ADOrganizationalUnit -Filter * | Sort-Object Name - Retrieves all OUs, sorted by name.
+53.	Get-ADOrganizationalUnit -Filter * -SearchScope OneLevel - Retrieves all OUs within a specific level.
+54.	**Get-ADOrganizationalUnit -Identity "OU=Example,DC=domain,DC=com" -Properties *** - Retrieves all properties of a specific OU.
+55.	Set-ADOrganizationalUnit -Identity "OU=Example,DC=domain,DC=com" -ProtectedFromAccidentalDeletion $true - Protects an OU from accidental deletion.
+
+Group Policy Management
+56.	Get-GPO - Retrieves Group Policy Objects (GPOs).
+57.	New-GPO - Creates a new GPO.
+58.	Set-GPO - Modifies GPO properties.
+59.	Remove-GPO - Removes a GPO.
+60.	Get-GPResultantSetOfPolicy - Retrieves the Resultant Set of Policy (RSoP) for a user or computer.
+61.	Get-GPOReport - Generates a report of a GPO in XML or HTML format.
+62.	Backup-GPO - Backs up a GPO.
+63.	Restore-GPO - Restores a GPO from backup.
+64.	New-GPLink - Links a GPO to an OU, site, or domain.
+65.	Remove-GPLink - Removes a GPO link.
+66.	Get-GPInheritance - Retrieves GPO inheritance information for an OU, site, or domain.
+67.	Set-GPInheritance - Modifies GPO inheritance settings.
+68.	Get-GPPermissions - Retrieves GPO permissions.
+69.	Set-GPPermissions - Modifies GPO permissions.
+70.	Import-GPO - Imports settings from a GPO backup.
+
+Domain Controller Management
+71.	Get-ADDomainController - Retrieves domain controller information.
+72.	Move-ADDirectoryServer - Moves a domain controller to a different site.
+73.	Get-ADDomain - Retrieves domain information.
+74.	Get-ADForest - Retrieves forest information.
+75.	Get-ADReplicationPartnerMetadata - Retrieves replication metadata for a domain controller.
+76.	Get-ADReplicationSite - Retrieves site information.
+77.	Get-ADReplicationSiteLink - Retrieves site link information.
+78.	Set-ADDomainControllerPasswordReplicationPolicy - Configures password replication policies for RODCs.
+79.	Get-ADDomainControllerPasswordReplicationPolicyUsage - Retrieves the usage of password replication policies for RODCs.
+80.	Move-ADDirectoryServerOperationMasterRole - Transfers an FSMO role to another domain controller.
+81.	Repadmin /replsummary - Checks replication status.
+82.	Get-ADDomainController -Discover - Discovers domain controllers in the domain.
+83.	Install-ADDSDomainController - Installs a new domain controller.
+84.	Get-ADReplicationFailure - Retrieves replication failures.
+85.	Get-ADDomainController -Filter "IsGlobalCatalog -eq $true" - Retrieves all global catalog servers.
+
+Miscellaneous
+86.	Get-ADObject - Retrieves any AD object.
+87.	New-ADObject - Creates a new generic AD object.
+88.	Remove-ADObject - Removes an AD object.
+89.	Search-ADAccount - Searches for AD accounts with specific criteria.
+90.	Get-ADReplicationConnection - Retrieves replication connection information.
+91.	Get-ADRootDSE - Retrieves information about the AD forest and domain.
+92.	New-ADReplicationSite - Creates a new replication site.
+93.	Remove-ADReplicationSite - Removes a replication site.
+94.	Get-ADFineGrainedPasswordPolicy - Retrieves fine-grained password policies.
+95.	New-ADFineGrainedPasswordPolicy - Creates a fine-grained password policy.
+96.	Set-ADFineGrainedPasswordPolicy - Modifies a fine-grained password policy.
+97.	Remove-ADFineGrainedPasswordPolicy - Removes a fine-grained password policy.
+98.	New-ADServiceAccount - Creates a managed service account (MSA).
+99.	Get-ADServiceAccount - Retrieves managed service accounts (MSA).
+100.	Install-ADServiceAccount - Installs a managed service account (MSA) on a computer.
+
+
+Network Interface and Configuration
+1.	Get-NetAdapter
+  Retrieves information about network adapters.
+2.	Set-NetAdapter
+  Configures network adapter properties.
+3.	Enable-NetAdapter
+  Enables a network adapter.
+4.	Disable-NetAdapter
+  Disables a network adapter.
+5.	Rename-NetAdapter
+o	Renames a network adapter.
+6.	Get-NetIPAddress
+o	Retrieves IP address configuration.
+7.	New-NetIPAddress
+o	Configures a new IP address.
+8.	Remove-NetIPAddress
+o	Removes an IP address.
+9.	Set-NetIPAddress
+o	Modifies IP address configuration.
+10.	Get-NetIPConfiguration
+o	Displays detailed IP configuration for all adapters.
+11.	Test-Connection
+o	Sends ICMP echo requests to test network connectivity (like ping).
+12.	Get-NetIPInterface
+o	Retrieves network interface IP configurations.
+13.	Set-NetIPInterface
+o	Modifies network interface IP settings.
+14.	Get-NetRoute
+o	Retrieves routing table entries.
+15.	New-NetRoute
+o	Adds a new route to the routing table.
+16.	Remove-NetRoute
+o	Removes a route from the routing table.
+17.	Set-NetRoute
+o	Modifies an existing route in the routing table.
+18.	Get-NetNeighbor
+o	Retrieves ARP and NDP cache entries.
+19.	Set-NetNeighbor
+o	Modifies ARP and NDP cache entries.
+20.	Remove-NetNeighbor
+o	Removes ARP and NDP cache entries.
+Firewall and Security
+21.	Get-NetFirewallRule
+o	Retrieves Windows Firewall rules.
+22.	New-NetFirewallRule
+o	Creates a new Windows Firewall rule.
+23.	Remove-NetFirewallRule
+o	Removes a Windows Firewall rule.
+24.	Set-NetFirewallRule
+o	Modifies an existing Windows Firewall rule.
+25.	Enable-NetFirewallRule
+o	Enables a Windows Firewall rule.
+26.	Disable-NetFirewallRule
+o	Disables a Windows Firewall rule.
+27.	Get-NetFirewallProfile
+o	Retrieves the current configuration of Windows Firewall profiles.
+28.	Set-NetFirewallProfile
+o	Configures Windows Firewall profiles.
+29.	Get-NetFirewallPortFilter
+o	Retrieves port filters associated with firewall rules.
+30.	Set-NetFirewallPortFilter
+o	Modifies port filters associated with firewall rules.
+Network Monitoring
+31.	Get-NetTCPConnection
+o	Retrieves active TCP connections.
+32.	Get-NetUDPEndpoint
+o	Retrieves active UDP endpoints.
+33.	Get-NetAdapterStatistics
+o	Retrieves statistics for network adapters.
+34.	Get-NetAdapterRss
+o	Retrieves Receive Side Scaling (RSS) configuration for network adapters.
+35.	Set-NetAdapterRss
+o	Configures Receive Side Scaling (RSS) on network adapters.
+36.	Get-NetAdapterAdvancedProperty
+o	Retrieves advanced properties of network adapters.
+37.	Set-NetAdapterAdvancedProperty
+o	Configures advanced properties of network adapters.
+38.	Get-NetAdapterBinding
+o	Retrieves network binding information.
+39.	Enable-NetAdapterBinding
+o	Enables a network binding on a network adapter.
+40.	Disable-NetAdapterBinding
+o	Disables a network binding on a network adapter.
+41.	Get-NetTCPSetting
+o	Retrieves TCP/IP settings.
+42.	Set-NetTCPSetting
+o	Modifies TCP/IP settings.
+43.	Get-NetUDPSetting
+o	Retrieves UDP settings.
+44.	Set-NetUDPSetting
+o	Modifies UDP settings.
+45.	Get-NetConnectionProfile
+o	Retrieves network connection profiles.
+46.	Set-NetConnectionProfile
+o	Configures network connection profiles.
+47.	Get-DnsClientCache
+o	Retrieves the DNS client cache.
+48.	Clear-DnsClientCache
+o	Clears the DNS client cache.
+49.	Get-DnsClientServerAddress
+o	Retrieves DNS server addresses.
+50.	Set-DnsClientServerAddress
+o	Configures DNS server addresses.
+DHCP and DNS
+51.	Get-DhcpServerv4Scope
+o	Retrieves DHCP scopes on a DHCP server.
+52.	Add-DhcpServerv4Scope
+o	Adds a new DHCP scope.
+53.	Remove-DhcpServerv4Scope
+o	Removes a DHCP scope.
+54.	Get-DhcpServerv4Lease
+o	Retrieves active DHCP leases.
+55.	Remove-DhcpServerv4Lease
+o	Deletes a DHCP lease.
+56.	Get-DhcpServerv4Reservation
+o	Retrieves DHCP reservations.
+57.	Add-DhcpServerv4Reservation
+o	Creates a DHCP reservation.
+58.	Remove-DhcpServerv4Reservation
+o	Deletes a DHCP reservation.
+59.	Get-DhcpServerv4OptionValue
+o	Retrieves DHCP option values.
+60.	Set-DhcpServerv4OptionValue
+o	Sets DHCP option values.
+61.	Get-DnsServerZone
+o	Retrieves DNS zones.
+62.	Add-DnsServerZone
+o	Creates a new DNS zone.
+63.	Remove-DnsServerZone
+o	Deletes a DNS zone.
+64.	Get-DnsServerResourceRecord
+o	Retrieves DNS records.
+65.	Add-DnsServerResourceRecord
+o	Creates a new DNS record.
+66.	Remove-DnsServerResourceRecord
+o	Deletes a DNS record.
+67.	Get-DnsServerForwarder
+o	Retrieves DNS forwarders.
+68.	Add-DnsServerForwarder
+o	Adds a DNS forwarder.
+69.	Remove-DnsServerForwarder
+o	Deletes a DNS forwarder.
+Network Troubleshooting
+70.	Test-NetConnection
+o	Tests network connectivity and other related information.
+71.	Test-DnsServer
+o	Tests DNS server functionality.
+72.	Test-Path
+o	Checks if a path (network or local) exists.
+73.	Test-Connection
+o	Tests network connectivity (like ping).
+74.	Resolve-DnsName
+o	Resolves a DNS name to an IP address.
+75.	Get-TraceRoute
+o	Performs a traceroute to a specified destination.
+76.	Test-WSMan
+o	Tests the functionality of Windows Remote Management.
+77.	Test-NetConnection -PortScanning
+o	Tests for open ports on a remote host.
+78.	Get-NetEventSession
+o	Retrieves network event tracing sessions.
+79.	New-NetEventSession
+o	Creates a new network event tracing session.
+80.	Remove-NetEventSession
+o	Deletes a network event tracing session.
+VPN and Remote Access
+81.	Get-VpnConnection
+o	Retrieves VPN connections.
+82.	Add-VpnConnection
+o	Creates a new VPN connection.
+83.	Remove-VpnConnection
+o	Deletes a VPN connection.
+84.	Set-VpnConnection
+o	Modifies a VPN connection.
+85.	Connect-VpnConnection
+o	Establishes a VPN connection.
+86.	Disconnect-VpnConnection
+o	Disconnects a VPN connection.
+87.	Get-RemoteAccessConnectionStatistics
+o	Retrieves statistics for remote access connections.
+88.	Get-RemoteAccessRoutingDomain
+o	Retrieves remote access routing domains.
+Miscellaneous Network Commands
+89.	Get-WmiObject -Class Win32_NetworkAdapter
+o	Retrieves network adapter information using WMI.
+90.	Get-WmiObject -Class Win32_NetworkAdapterConfiguration
+o	Retrieves network adapter configuration using WMI.
+91.	Restart-NetAdapter
+o	Restarts a network adapter.
+92.	Reset-NetAdapterAdvancedProperty
+o	Resets the advanced properties of a network adapter to default values.
+93.	Restart-Service -Name "Dhcp"
+o	Restarts the DHCP client service.
+94.	Restart-Service -Name "Dnscache"
+o	Restarts the DNS client service.
+95.	Get-NetSession
+o	Retrieves active network sessions on the local machine.
+96.	Remove-NetSession
+o	Terminates a network session.
+97.	Get-NetOffloadGlobalSetting
+o	Retrieves global offload settings for the network.
+98.	Set-NetOffloadGlobalSetting
+o	Configures global offload settings for the network.
+99.	Get-NetTCPSetting
+o	Retrieves TCP settings.
+100.	New-NetFirewallRule - Creates a new firewall rule to allow or block traffic.
+
