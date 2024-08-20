@@ -426,3 +426,114 @@ o	Configures global offload settings for the network.
 o	Retrieves TCP settings.
 100.	New-NetFirewallRule - Creates a new firewall rule to allow or block traffic.
 
+
+User Management
+1.	Get-ADUser - Retrieves user objects.
+2.	New-ADUser - Creates a new user.
+3.	Set-ADUser - Modifies user properties.
+4.	Remove-ADUser - Deletes a user.
+5.	Unlock-ADAccount - Unlocks a user account.
+6.	Enable-ADAccount - Enables a user account.
+7.	Disable-ADAccount - Disables a user account.
+8.	Set-ADAccountPassword - Sets a user account password.
+9.	Set-ADUser -ChangePasswordAtLogon $true - Forces a user to change their password at next logon.
+10.	Move-ADObject - Moves a user to a different OU.
+11.	Get-ADUser -Filter {LastLogonDate -lt (Get-Date).AddDays(-90)} - Finds inactive users.
+12.	Rename-ADObject - Renames a user account.
+13.	Get-ADUser -Identity username -Properties PasswordLastSet - Retrieves when the password was last set.
+14.	Get-ADUser -Identity username -Properties LastLogonDate - Retrieves the last logon date for a user.
+15.	Search-ADAccount -UsersOnly -AccountDisabled - Finds all disabled user accounts.
+16.	Search-ADAccount -AccountExpired - Finds expired user accounts.
+17.	Get-ADUser -Filter {PasswordNeverExpires -eq $true} - Finds users with non-expiring passwords.
+18.	Set-ADUser -Identity username -HomeDirectory \server\home$\username - Sets the home directory for a user.
+19.	Get-ADUser -Filter {LockedOut -eq $true} - Finds all locked-out users.
+20.	Set-ADUser -Identity username -EmailAddress "user@domain.com" - Sets the email address for a user.
+Group Management
+21.	Get-ADGroup - Retrieves group objects.
+22.	New-ADGroup - Creates a new group.
+23.	Set-ADGroup - Modifies group properties.
+24.	Remove-ADGroup - Deletes a group.
+25.	Add-ADGroupMember - Adds members to a group.
+26.	Remove-ADGroupMember - Removes members from a group.
+27.	Get-ADGroupMember - Retrieves members of a group.
+28.	Get-ADGroup -Filter {GroupScope -eq 'Universal'} - Finds all universal groups.
+29.	Set-ADGroup -Identity "GroupName" -ManagedBy "ManagerDN" - Sets the manager of a group.
+30.	Get-ADGroup -Identity "GroupName" -Properties MemberOf - Lists groups that a group is a member of.
+31.	Get-ADGroup -Filter 'Name -like "Prefix"'* - Retrieves groups with names matching a pattern.
+32.	Get-ADGroupMember -Identity "GroupName" -Recursive - Lists all members recursively in a group.
+33.	Get-ADGroup -Filter {ManagedBy -eq 'ManagerDN'} - Finds groups managed by a specific user.
+34.	Get-ADGroupMember -Identity "GroupName" | Export-Csv -Path "path\to\file.csv" - Exports group members to CSV.
+35.	New-ADGroup -Name "GroupName" -GroupScope Global -GroupCategory Security -Path "OU=Groups,DC=domain,DC=com" - Creates a security group.
+36.	Add-ADPrincipalGroupMembership - Adds a user or computer to multiple groups.
+37.	Remove-ADPrincipalGroupMembership - Removes a user or computer from multiple groups.
+38.	Get-ADGroupMember -Identity "GroupName" | Select-Object Name - Retrieves and displays only the names of group members.
+39.	Get-ADGroup -Filter * | Sort-Object Name - Lists all groups sorted by name.
+40.	Set-ADGroup -Identity "GroupName" -Description "New Description" - Sets the description of a group.
+Computer Management
+41.	Get-ADComputer - Retrieves computer objects.
+42.	New-ADComputer - Creates a new computer account.
+43.	Set-ADComputer - Modifies computer properties.
+44.	Remove-ADComputer - Deletes a computer account.
+45.	Rename-ADObject -Identity "CN=OldName,OU=Computers,DC=domain,DC=com" -NewName "NewName" - Renames a computer.
+46.	Get-ADComputer -Filter 'OperatingSystem -like "Server"' - Finds all servers.
+47.	Get-ADComputer -Filter 'OperatingSystem -like "Windows 10"' - Finds all Windows 10 computers.
+48.	Disable-ADAccount -Identity "ComputerName" - Disables a computer account.
+49.	Enable-ADAccount -Identity "ComputerName" - Enables a computer account.
+50.	Search-ADAccount -ComputersOnly -AccountInactive -TimeSpan 90 - Finds inactive computer accounts.
+51.	Test-ComputerSecureChannel -ComputerName "ComputerName" -Repair -Credential (Get-Credential) - Tests and repairs secure channel.
+52.	Move-ADObject -Identity "CN=ComputerName,OU=OldOU,DC=domain,DC=com" -TargetPath "OU=NewOU,DC=domain,DC=com" - Moves a computer to a different OU.
+53.	Get-ADComputer -Filter * | Sort-Object Name - Lists all computers sorted by name.
+54.	Get-ADComputer -Filter {Name -like "Prefix"}* - Finds computers with names matching a pattern.
+55.	Get-ADComputer -Filter {LastLogonDate -lt (Get-Date).AddDays(-90)} - Finds computers not logged into for 90 days.
+56.	New-ADComputer -Name "ComputerName" -Path "OU=Computers,DC=domain,DC=com" -Description "Description" - Creates a computer with a description.
+57.	Set-ADComputer -Identity "ComputerName" -Location "Data Center" - Sets the location of a computer.
+58.	Get-ADComputer -Filter {DNSHostName -eq "hostname.domain.com"} - Finds a computer by DNS name.
+59.	Get-ADComputer -Filter {ServicePrincipalName -eq "HTTP/hostname"} - Finds a computer by service principal name.
+60.	Remove-ADComputer -Identity "ComputerName" - Deletes a computer account.
+
+Organizational Unit (OU) Management
+61.	Get-ADOrganizationalUnit - Retrieves OU objects.
+62.	New-ADOrganizationalUnit - Creates a new OU.
+63.	Set-ADOrganizationalUnit - Modifies OU properties.
+64.	Remove-ADOrganizationalUnit - Deletes an OU.
+65.	Set-ADOrganizationalUnit -Identity "OU=Users,DC=domain,DC=com" -ProtectedFromAccidentalDeletion $true - Protects an OU from accidental deletion.
+66.	Move-ADObject -Identity "OU=OldOU,DC=domain,DC=com" -TargetPath "OU=NewOU,DC=domain,DC=com" - Moves an OU.
+67.	Get-ADOrganizationalUnit -Filter * | Sort-Object Name - Lists all OUs sorted by name.
+68.	Get-ADOrganizationalUnit -Filter {Name -like "Prefix"}* - Finds OUs with names matching a pattern.
+69.	Get-ADOrganizationalUnit -Filter {ProtectedFromAccidentalDeletion -eq $true} - Finds OUs protected from accidental deletion.
+70.	Get-ADOrganizationalUnit -Identity "OU=Name,DC=domain,DC=com" - Retrieves specific OU properties.
+Domain and Forest Management
+71.	Get-ADDomain - Retrieves information about the domain.
+72.	Get-ADForest - Retrieves information about the forest.
+73.	Get-ADDomainController - Retrieves information about domain controllers.
+74.	Get-ADReplicationSite - Retrieves replication site information.
+75.	Get-ADReplicationSiteLink - Retrieves replication site link information.
+76.	Get-ADTrust - Retrieves trust relationships between domains.
+77.	New-ADReplicationSite - Creates a new replication site.
+78.	New-ADReplicationSiteLink - Creates a new replication site link.
+79.	Set-ADDomainMode - Changes the domain functional level.
+80.	Set-ADForestMode - Changes the forest functional level.
+81.	Get-ADRootDSE - Retrieves root DSE information for the domain.
+82.	Set-ADDomainController -Identity "DCName" -IsGlobalCatalog $true - Sets a domain controller as a Global Catalog.
+83.	Install-ADDSForest - Installs a new Active Directory forest.
+84.	Install-ADDSDomainController - Installs a new domain controller.
+85.	Get-ADOptionalFeature - Retrieves optional features available in the forest.
+86.	Enable-ADOptionalFeature - Enables an optional feature in the forest.
+87.	Get-ADDomainControllerPasswordReplicationPolicy - Retrieves password replication policies.
+88.	Get-ADDomainControllerPasswordReplicationPolicyUsage - Retrieves password replication policy usage.
+89.	Get-ADDomainControllerOperationMasterRole - Retrieves FSMO roles.
+90.	Move-ADDirectoryServerOperationMasterRole - Moves FSMO roles.
+Security and Auditing
+91.	Get-ADFineGrainedPasswordPolicy - Retrieves fine-grained password policies.
+92.	New-ADFineGrainedPasswordPolicy - Creates a new fine-grained password policy.
+93.	Set-ADFineGrainedPasswordPolicy - Modifies fine-grained password policies.
+94.	Remove-ADFineGrainedPasswordPolicy - Deletes a fine-grained password policy.
+95.	Get-ADAccountAuthorizationGroup - Retrieves authorization groups for a user.
+96.	Get-ADPermission - Retrieves permissions set on an AD object.
+97.	Add-ADPermission - Adds permissions to an AD object.
+98.	Remove-ADPermission - Removes permissions from an AD object.
+99.	Get-ADAuditSettings - Retrieves audit settings for an AD object.
+100.	Set-ADAuditSettings - Configures audit settings for an AD object.
+
+
+
