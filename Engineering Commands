@@ -1,0 +1,90 @@
+Active Directory Management
+Get-ADUser - Retrieve user objects from Active Directory.
+Set-ADUser - Modify user properties.
+New-ADUser - Create a new user.
+Remove-ADUser - Delete a user.
+Get-ADGroup - Retrieve group objects.
+New-ADGroup - Create a new group.
+Remove-ADGroup - Delete a group.
+Add-ADGroupMember - Add members to a group.
+Remove-ADGroupMember - Remove members from a group.
+Get-ADGroupMember - Retrieve members of a group.
+Get-ADComputer - Retrieve computer objects.
+New-ADComputer - Create a new computer object.
+Remove-ADComputer - Delete a computer object.
+Get-ADOrganizationalUnit - Retrieve OUs.
+New-ADOrganizationalUnit - Create a new OU.
+Remove-ADOrganizationalUnit - Delete an OU.
+Set-ADOrganizationalUnit - Modify OU properties.
+Get-ADDomainController - Retrieve information about domain controllers.
+Move-ADObject - Move an object to a different OU.
+Search-ADAccount - Search for accounts (e.g., inactive users).
+Enable-ADAccount - Enable a user account.
+Disable-ADAccount - Disable a user account.
+Unlock-ADAccount - Unlock a user account.
+Get-ADReplicationPartnerMetadata - Get replication metadata.
+Sync-ADObject - Synchronize an object across domain controllers.
+
+System Administration
+Get-Service - Get the status of services.
+Start-Service - Start a service.
+Stop-Service - Stop a service.
+Restart-Service - Restart a service.
+Get-Process - Get running processes.
+Stop-Process - Stop a running process.
+Start-Process - Start a new process.
+Get-EventLog - Retrieve event log entries.
+Clear-EventLog - Clear event logs.
+Get-EventViewer - Access the Event Viewer.
+Get-Job - Retrieve background jobs.
+Start-Job - Start a new background job.
+Stop-Job - Stop a running job.
+Wait-Job - Wait for a job to complete.
+Get-ScheduledTask - Retrieve scheduled tasks.
+New-ScheduledTask - Create a new scheduled task.
+Unregister-ScheduledTask - Delete a scheduled task.
+Get-WmiObject - Query WMI for system information.
+Invoke-WmiMethod - Invoke WMI methods.
+Get-WinEvent - Retrieve event logs using Event Viewer.
+Get-PSDrive - Retrieve information about PS drives.
+New-PSDrive - Create a new PS drive.
+Remove-PSDrive - Remove a PS drive.
+Get-PSProvider - Retrieve information about PS providers.
+Invoke-Command - Run commands on remote computers.
+Enter-PSSession - Start an interactive session on a remote computer.
+Exit-PSSession - End an interactive session.
+Test-Connection - Ping a network connection.
+Restart-Computer - Restart a remote or local computer.
+Shutdown-Computer - Shut down a remote or local computer.
+
+Networking
+Get-NetIPAddress - Retrieve IP address configuration.
+New-NetIPAddress - Configure a new IP address.
+Remove-NetIPAddress - Remove an IP address configuration.
+Get-NetAdapter - Retrieve network adapter information.
+Set-NetAdapter - Modify network adapter settings.
+Disable-NetAdapter - Disable a network adapter.
+Enable-NetAdapter - Enable a network adapter.
+Get-NetRoute - Retrieve the routing table.
+New-NetRoute - Add a route to the routing table.
+Remove-NetRoute - Remove a route from the routing table.
+Get-NetFirewallRule - Retrieve firewall rules.
+New-NetFirewallRule - Create a new firewall rule.
+Remove-NetFirewallRule - Delete a firewall rule.
+Set-NetFirewallRule - Modify a firewall rule.
+Get-NetIPAddress - Retrieve IP addresses.
+Test-NetConnection - Test network connections.
+Get-NetTCPConnection - Retrieve TCP connections.
+Get-DnsClient - Retrieve DNS client settings.
+Set-DnsClientServerAddress - Set DNS server addresses.
+Get-NetworkAdapterStatistics - Retrieve adapter statistics.
+Reset-NetworkAdapter - Reset a network adapter.
+
+Security & User Management
+
+Get-LocalUser - Retrieve local user accounts.
+New-LocalUser - Create a new local user account.
+Remove-LocalUser - Delete a local user account.
+Add-LocalGroupMember - Add a user to a local group.
+Remove-LocalGroupMember - Remove a user from a local group.
+Get-LocalGroup - Retrieve local groups.
