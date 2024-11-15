@@ -1,0 +1,30 @@
+ 
+# Define SMTP server and port
+$smtpServer = "smtp.office365.com"
+$smtpPort = 587
+# Define your Office 365 credentials
+$username = "yourusername@domain.com"
+$password = "yourpassword"
+$securePassword = ConvertTo-SecureString $password -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword)
+# Define email details
+$from = "yourusername@domain.com"
+$to = "recipient@domain.com"
+$subject = "Test Email from PowerShell"
+$body = "This is a test email sent from PowerShell to test Office 365 SMTP authentication."
+# Create and configure the SMTP client
+$smtpClient = New-Object Net.Mail.SmtpClient($smtpServer, $smtpPort)
+$smtpClient.EnableSsl = $true
+$smtpClient.Credentials = $credential
+# Send the email
+try {
+    $smtpClient.Send($from, $to, $subject, $body)
+    Write-Output "Test email sent successfully."
+} catch {
+    Write-Output "Failed to send test email: $_"
+} finally {
+    # Dispose of the SMTP client
+    $smtpClient.Dispose()
+}
+ 
+ 
