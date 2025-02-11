@@ -12,4 +12,9 @@ repadmin /kcc site:HQ
 
 dcdiag /s:DC01
 
+repadmin /syncall /AeD
+ 
+Start-ADSyncSyncCycle -PolicyType delta
+ 
+
 https://theitbros.com/dcdiag/
