@@ -1,0 +1,35 @@
+# Check MDM Enrollment Status
+$mdmStatus = (dsregcmd /status) -match "MDM enrollment:\s+(.*)"
+
+if ($matches[1] -ne "Yes") {
+    Write-Host "Device is not enrolled in MDM. Enforcing enrollment..."
+    
+    # Force MDM Enrollment
+    try {
+        Start-Process -FilePath "C:\Windows\System32\dmregcmd.exe" -ArgumentList "/enroll" -NoNewWindow -Wait
+        Write-Host "MDM enrollment triggered successfully."
+    } catch {
+        Write-Host "Failed to trigger MDM enrollment: $_"
+    }
+
+    # Ensure the device is Azure AD joined
+    $aadStatus = (dsregcmd /status) -match "AzureAdJoined:\s+(.*)"
+    if ($matches[1] -ne "YES") {
+        Write-Host "Device is not Azure AD Joined. Forcing join..."
+        try {
+            Start-Process -FilePath "C:\Windows\System32\dsregcmd.exe" -ArgumentList "/join" -NoNewWindow -Wait
+            Write-Host "Azure AD Join triggered successfully."
+        } catch {
+            Write-Host "Failed to join Azure AD: $_"
+        }
+    } else {
+        Write-Host "Device is already Azure AD Joined."
+    }
+} else {
+    Write-Host "Device is already enrolled in MDM."
+}
+
+# Force Group Policy Update (if enrollment is configured via GPO)
+Write-Host "Refreshing Group Policy..."
+gpupdate /force
+Write-Host "Group Policy update completed."
